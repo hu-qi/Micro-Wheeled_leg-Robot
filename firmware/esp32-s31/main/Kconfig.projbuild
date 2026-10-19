@@ -1,0 +1,18 @@
+menu "Wheeled-leg S31 bring-up"
+    config WL_I2C_PROBE_ENABLE
+        bool "Enable external I2C probe (ONLY after wiring inspection)"
+        default n
+        help
+            WARNING: Do not attach motors or servos during P0 tests.
+            Supply 3.3 V logic and common ground, never 5 V into GPIO.
+    config WL_I2C_SDA_GPIO
+        int "I2C SDA GPIO"
+        range 0 61
+        default 1
+        depends on WL_I2C_PROBE_ENABLE
+    config WL_I2C_SCL_GPIO
+        int "I2C SCL GPIO"
+        range 0 61
+        default 2
+        depends on WL_I2C_PROBE_ENABLE
+endmenu
